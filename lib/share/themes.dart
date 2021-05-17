@@ -20,7 +20,11 @@ ThemeData lightTheme = ThemeData(
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedItemColor: defaultColor,
     backgroundColor: Colors.white,
-    unselectedItemColor: Colors.grey
+    unselectedItemColor: Colors.grey,
+    unselectedLabelStyle: TextStyle(
+      color:Colors.grey,
+    ),
+    showUnselectedLabels: true,
   ),
 );
 
