@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/layouts/shop-layout.dart';
 import 'package:shop_app/models/login-model.dart';
 import 'package:shop_app/modules/home/home-screen.dart';
 import 'package:shop_app/modules/login/login-states.dart';
@@ -29,7 +30,7 @@ class LoginCubit extends Cubit<LoginStates>{
       'password':password,
     }).then((value){
       loginModel=LoginModel.fromJson(value.data);
-      navigateTo(context, Home());
+      navigateTo(context, ShopLayout());
       emit(LoginSuccessState(loginModel));
     }).catchError((onError){
       print(onError);

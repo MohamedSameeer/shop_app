@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/modules/login/login-cubit.dart';
+import 'package:shop_app/modules/register/register-screen.dart';
 import 'package:shop_app/share/component/component.dart';
 import 'package:shop_app/share/network/local/cash-helper.dart';
 
@@ -84,7 +85,9 @@ class Login extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Don't have an account"),
-                          TextButton(onPressed: (){}, child: Text("REGISTER")),
+                          TextButton(onPressed: (){
+                            navigateTo(context, Register());
+                          }, child: Text("REGISTER")),
                         ],
                       ),
                     ],
