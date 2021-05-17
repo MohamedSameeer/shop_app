@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/layouts/shop-layout.dart';
 import 'package:shop_app/modules/home/home-screen.dart';
 import 'package:shop_app/modules/login/login_screen.dart';
 import 'package:shop_app/modules/on_board/on_board_screen.dart';
 import 'package:shop_app/share/network/local/cash-helper.dart';
 import 'package:shop_app/share/network/remote/dio-helper.dart';
 import 'package:shop_app/share/themes.dart';
+
+import 'share/component/constant.dart';
 
 void main()async{
 
@@ -15,7 +18,8 @@ void main()async{
   Widget startWidget;
   if(CashHelper.getData('onBoard')!=null){
     if(CashHelper.getData('token')!=null){
-      startWidget=Home();
+      token=CashHelper.getData('token');
+      startWidget=ShopLayout();
     }else
       startWidget=Login();
   }else

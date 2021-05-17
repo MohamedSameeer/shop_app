@@ -92,7 +92,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 controller: onBoardingController,
                 count: modelList.length,
                 effect: ExpandingDotsEffect(
-                  activeDotColor: AccentColor,
+                  activeDotColor: defaultColor,
                 ),
               ),
               Spacer(),

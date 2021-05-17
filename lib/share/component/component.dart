@@ -39,7 +39,7 @@ Widget defaultButton({
 })
 =>MaterialButton(
   minWidth: double.infinity,
-  color: PrimaryColor,
+  color: defaultColor,
 onPressed: onPressed,
 child: Text(text),
 );

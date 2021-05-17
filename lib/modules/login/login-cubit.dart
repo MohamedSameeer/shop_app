@@ -5,7 +5,7 @@ import 'package:shop_app/models/login-model.dart';
 import 'package:shop_app/modules/home/home-screen.dart';
 import 'package:shop_app/modules/login/login-states.dart';
 import 'package:shop_app/share/component/component.dart';
-import 'package:shop_app/share/network/end-points.dart';
+import 'package:shop_app/share/network/remote/end-points.dart';
 import 'package:shop_app/share/network/remote/dio-helper.dart';
 
 class LoginCubit extends Cubit<LoginStates>{
@@ -24,7 +24,7 @@ class LoginCubit extends Cubit<LoginStates>{
   //Post Api
   LoginModel loginModel;
   login(String email, String password,BuildContext context){
-    DioHelper.postData(lang:'ar', url: loginUrl, data: {
+    DioHelper.postData(lang:'ar', url: LoginUrl, data: {
       'email':email,
       'password':password,
     }).then((value){

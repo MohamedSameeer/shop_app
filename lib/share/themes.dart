@@ -4,8 +4,6 @@ import 'package:shop_app/share/style/colors.dart';
 
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
-  primaryColor: PrimaryColor,
-  accentColor: AccentColor,
   fontFamily: 'Jannah',
   appBarTheme: AppBarTheme(
     systemOverlayStyle: SystemUiOverlayStyle(
@@ -18,6 +16,11 @@ ThemeData lightTheme = ThemeData(
     titleTextStyle:TextStyle(
       color: Colors.white,
     )
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    selectedItemColor: defaultColor,
+    backgroundColor: Colors.white,
+    unselectedItemColor: Colors.grey
   ),
 );
 
