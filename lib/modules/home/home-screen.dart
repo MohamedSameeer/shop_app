@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/models/categories-model.dart';
 import 'package:shop_app/models/home-model.dart';
+import 'package:shop_app/share/component/component.dart';
 import 'package:shop_app/share/cubit/cubit.dart';
 import 'package:shop_app/share/cubit/states.dart';
 import 'package:shop_app/share/network/local/cash-helper.dart';
@@ -16,7 +17,13 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, States>(
-      listener: (BuildContext context, state) {},
+      listener: (BuildContext context, state) {
+        if(state is HomeChangeFavouriteSuccessState){
+          if(state.model.status==false){
+            toast(msg: state.model.message, state: ToastState.ERROR);
+          }
+        }
+      },
       builder: (BuildContext context, state) {
         return ShopCubit.getInstance(context).homeModel != null &&
             ShopCubit.getInstance(context).categoriesModel!=null
@@ -96,7 +103,7 @@ class Home extends StatelessWidget {
                     mainAxisSpacing: 1.0,
                     childAspectRatio: 1/1.7,
                     children: List.generate(model.data.products.length,
-                        (index) => buildGridProduct(model.data.products[index])),
+                        (index) => buildGridProduct(model.data.products[index],context)),
                   ),
                 ),
               ],
@@ -107,7 +114,7 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget buildGridProduct(HomeProductsModel product) => Container(
+  Widget buildGridProduct(HomeProductsModel product,context) => Container(
     padding: EdgeInsets.all(10.0),
     color: Colors.white,
     child: Stack(
@@ -129,6 +136,7 @@ class Home extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
+              Spacer(),
               Row(
                 children: [
                   Text(
@@ -148,7 +156,17 @@ class Home extends StatelessWidget {
                       ),
                     ),
                   Spacer(),
-                  IconButton(icon: Icon(Icons.favorite_border), onPressed: (){}),
+                  IconButton(
+                      icon: CircleAvatar(
+                        backgroundColor:ShopCubit.getInstance(context).favourites[product.id]?defaultColor:Colors.grey,
+                          child: Icon(
+                              Icons.favorite_border
+                          ),
+                      ),
+                      onPressed: (){
+                        ShopCubit.getInstance(context).changeFavourite(product.id);
+                      }
+                      ),
                 ],
               )
             ],

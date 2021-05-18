@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/layouts/shop-layout.dart';
 import 'package:shop_app/modules/home/home-screen.dart';
 import 'package:shop_app/modules/login/login_screen.dart';
@@ -8,10 +9,12 @@ import 'package:shop_app/share/network/remote/dio-helper.dart';
 import 'package:shop_app/share/themes.dart';
 
 import 'share/component/constant.dart';
+import 'share/component/state-observer.dart';
 
 void main()async{
 
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CashHelper.init();
 

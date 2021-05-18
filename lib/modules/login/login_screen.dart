@@ -28,7 +28,8 @@ class Login extends StatelessWidget {
             }else{
               toast(msg:state.loginModel.message, state: ToastState.ERROR);
             }
-          }
+          }else if(state is LoginLoadingState)
+            Center(child: CircularProgressIndicator());
         } ,
         builder:(context, state)=>Scaffold(
           body: Center(

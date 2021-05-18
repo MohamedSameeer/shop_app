@@ -8,4 +8,5 @@ class LoginSuccessState extends LoginStates{
   final LoginModel loginModel;
   LoginSuccessState(this.loginModel);
 }
+class LoginLoadingState extends LoginStates {}
 class LoginErrorState extends LoginStates{}

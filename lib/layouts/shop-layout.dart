@@ -9,13 +9,14 @@ class ShopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ShopCubit>(
-        create: (BuildContext context)=>ShopCubit()..getProducts()..getCategories(),
+        create: (BuildContext context)=>ShopCubit()..getProducts()..getCategories()..getFavourite()..getProfile(),
       child: BlocConsumer<ShopCubit,States>(
         listener: (context,state){},
         builder: (context,state){
           ShopCubit cubit=ShopCubit.getInstance(context);
           return Scaffold(
             appBar: AppBar(
+              leading: SizedBox(width: 0,),
               title: Text(
                 cubit.title[cubit.pageIndex],
               ),

@@ -10,13 +10,15 @@ void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
 
 Widget defaultTextFormField({
   @required controller,
-  @required label,
+  @required String label,
   @required prefix,
   @required textType,
    suffix,
+  String initValue,
   bool isPassword=false,
 })=>TextFormField(
   controller: controller,
+  initialValue: initValue,
   obscureText: isPassword,
   decoration: InputDecoration(
     border: OutlineInputBorder(),
@@ -33,6 +35,14 @@ Widget defaultTextFormField({
       return null;
   }
 );
+
+Widget defaultSeparator() => Container(
+  width: double.infinity,
+  height: 1.0,
+  color: Colors.grey[300],
+);
+
+
 Widget defaultButton({
   @required onPressed,
   @required text,
